@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Text to CamelCase</title>
+    <style>
+        .container {
+            padding: 3em;
+            display: flex;
+            flex-direction: column;
+            gap: 1em;
+            font-family: sans-serif;
+        }
+
+        .header {
+            display: flex;
+        }
+
+        .contents {
+            display: flex;
+            gap: 1em;
+        }
+
+        .contents .content {
+            display: flex;
+            flex-direction: column;
+            gap: .5em;
+            width: 100%;
+        }
+
+        .content label {
+            font-size: 1rem;
+        }
+
+        .content textarea {
+            height: 20em;
+            border-radius: .5em;
+            border: 1px solid #d2d2d2;
+            resize: none;
+            padding: 1em;
+        }
+
+        .content textarea:read-only {
+            background-color: white;
+        }
+
+        .content textarea:focus {
+            outline: none;
+            box-shadow: none;
+        }
+
+        .container button {
+            height: 3em;
+            background-color: white;
+            border-radius: .5em;
+            border: 1px solid #d2d2d2;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <h1>Text to CamelCase</h1>
+    </div>
+    <div class="contents">
+        <div class="content">
+            <label for="input">Input</label>
+            <textarea id="input"></textarea>
+        </div>
+        <div class="content">
+            <label for="output">Output</label>
+            <textarea id="output" readonly></textarea>
+        </div>
+    </div>
+    <button id="convert">Convert</button>
+</div>
+</body>
+<script>
+    document.getElementById('convert').addEventListener('click', () => {
+        const input = document.getElementById('input')
+        const result = convert(input.value)
+        const output = document.getElementById('output')
+        output.value = result
+    })
+    document.getElementById('output').addEventListener('click', (e) => {
+        e.target.select()
+    })
+
+    function convert(data) {
+        let result = ''
+        try {
+            let tmp = data.toLowerCase()
+
+            tmp = tmp.replace(/\n{2,}/g, '\n')
+            tmp = tmp.replace(/[^a-zA-Z0-9_\n]/g, '')
+
+            tmp = tmp.replaceAll('_a', 'A')
+            tmp = tmp.replaceAll('_b', 'B')
+            tmp = tmp.replaceAll('_c', 'C')
+            tmp = tmp.replaceAll('_d', 'D')
+            tmp = tmp.replaceAll('_e', 'E')
+            tmp = tmp.replaceAll('_f', 'F')
+            tmp = tmp.replaceAll('_g', 'G')
+            tmp = tmp.replaceAll('_h', 'H')
+            tmp = tmp.replaceAll('_i', 'I')
+            tmp = tmp.replaceAll('_j', 'J')
+            tmp = tmp.replaceAll('_k', 'K')
+            tmp = tmp.replaceAll('_l', 'L')
+            tmp = tmp.replaceAll('_m', 'M')
+            tmp = tmp.replaceAll('_n', 'N')
+            tmp = tmp.replaceAll('_o', 'O')
+            tmp = tmp.replaceAll('_p', 'P')
+            tmp = tmp.replaceAll('_q', 'Q')
+            tmp = tmp.replaceAll('_r', 'R')
+            tmp = tmp.replaceAll('_s', 'S')
+            tmp = tmp.replaceAll('_t', 'T')
+            tmp = tmp.replaceAll('_u', 'U')
+            tmp = tmp.replaceAll('_v', 'V')
+            tmp = tmp.replaceAll('_w', 'W')
+            tmp = tmp.replaceAll('_x', 'X')
+            tmp = tmp.replaceAll('_y', 'Y')
+            tmp = tmp.replaceAll('_z', 'Z')
+            tmp = tmp.replace(/_/g, '')
+
+            result = tmp;
+        } catch (e) {
+            alert('error')
+        }
+
+        return result
+    }
+</script>
+</html>
